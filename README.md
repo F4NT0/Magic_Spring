@@ -29,4 +29,10 @@
 ![img.png](imgs/gitRemote.png)
 
 4. Para darmos um commit, devemos dizer o nome (github) do repositório externo
-5. 
+
+```shell
+> git add .
+> git commit -m "#1 Commit inicial do projeto"
+> git pull github main
+> git push --set-upstream github main
+```
