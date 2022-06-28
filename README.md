@@ -1,38 +1,10 @@
-## Criação inicial do Spring Boot
+# Bem vindo a Magic Store
+![opening](imgs/mtg-intro.gif)
 
-1. Abra o intellij e clique em File > New > Project...
+### A sua loja de Magic favorita!
 
-![img.png](imgs/img.png)
+- ✔️[Wiki do Projeto](https://github.com/F4NT0/Magic_Spring/wiki)
+- ✔️[Projeto de tarefas](https://github.com/F4NT0/Magic_Spring/projects/1)
+- ✔️[Issues criadas](https://github.com/F4NT0/Magic_Spring/issues?q=is%3Aissue+is%3Aclosed)
+- ✔️[Pull Request feitas](https://github.com/F4NT0/Magic_Spring/pulls?q=is%3Apr+is%3Aclosed)
 
-2. Depois coloque os dados necessários para o seu projeto
-
-![img.png](imgs/dadosSpring.png)
-
-3. Defina quais dependencias seu projeto precisa e clique em **Finalizar**
-
-![img.png](imgs/springDependency.png)
-
-4. Pronto! deixe o projeto carregar e ele ja vai configurar tudo sozinho.
-
-## Criando um repositorio externo
-
-1. Foi criado no Github um repositório para o nosso projeto:
-
-![img.png](imgs/repo.png)
-
-2. Vamos transformar o nosso projeto em um projeto git usando o **Git init**
-
-![img.png](imgs/gitInit.png)
-
-3. Vamos pegar o código do nosso repositório do Github e adicionar no nosso projeto com o **Git remote**
-
-![img.png](imgs/gitRemote.png)
-
-4. Para darmos um commit, devemos dizer o nome (github) do repositório externo
-
-```shell
-> git add .
-> git commit -m "#1 Commit inicial do projeto"
-> git pull github main
-> git push --set-upstream github main
-```
