@@ -21,13 +21,13 @@ public class CardDTO {
     private TipoCard tipoCard;
 
     @ApiModelProperty(position = 4, notes = "Cores do card")
-    private List<CorCard> coresCard;
+    private CorCard corCard;
 
     public CardDTO(Card card) {
         this.iCard = card.getiCard();
         this.nomeCard = card.getNomeCard();
         this.tipoCard = card.getTipoCard();
-        this.coresCard = card.getCoresCard();
+        this.corCard = card.getCorCard();
     }
 
     /**
@@ -51,7 +51,7 @@ public class CardDTO {
         return tipoCard;
     }
 
-    public List<CorCard> getCoresCard() {
-        return coresCard;
+    public CorCard getCorCard() {
+        return corCard;
     }
 }
