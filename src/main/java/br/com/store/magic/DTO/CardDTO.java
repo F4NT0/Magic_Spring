@@ -1,10 +1,14 @@
 package br.com.store.magic.DTO;
 
-import br.com.digifred.global.Utils.DeserializadorJson;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import br.com.store.magic.enums.CorCard;
+import br.com.store.magic.enums.TipoCard;
+import br.com.store.magic.model.Card;
 import io.swagger.annotations.ApiModelProperty;
 
-@JsonDeserialize(using = DeserializadorJson.class)
+import java.util.List;
+import java.util.stream.Collectors;
+
+
 public class CardDTO {
 
     @ApiModelProperty(position = 1, notes = "Identificação única do aluno")
@@ -13,19 +17,41 @@ public class CardDTO {
     @ApiModelProperty(position = 2, notes = "Nome do card")
     private String nomeCard;
 
-    public Long getiCard() {
-        return iCard;
+    @ApiModelProperty(position = 3, notes = "Tipo do card")
+    private TipoCard tipoCard;
+
+    @ApiModelProperty(position = 4, notes = "Cores do card")
+    private List<CorCard> coresCard;
+
+    public CardDTO(Card card) {
+        this.iCard = card.getiCard();
+        this.nomeCard = card.getNomeCard();
+        this.tipoCard = card.getTipoCard();
+        this.coresCard = card.getCoresCard();
     }
 
-    public void setiCard(Long iCard) {
-        this.iCard = iCard;
+    /**
+     * Conversor do tipo Card do model para o tipo CardDTO utilizando o stream()
+     * @param cards
+     * @return
+     */
+    public static List<CardDTO> converter(List<Card> cards) {
+        return cards.stream().map(CardDTO::new).collect(Collectors.toList());
+    }
+
+    public Long getiCard() {
+        return iCard;
     }
 
     public String getNomeCard() {
         return nomeCard;
     }
 
-    public void setNomeCard(String nomeCard) {
-        this.nomeCard = nomeCard;
+    public TipoCard getTipoCard() {
+        return tipoCard;
+    }
+
+    public List<CorCard> getCoresCard() {
+        return coresCard;
     }
 }
