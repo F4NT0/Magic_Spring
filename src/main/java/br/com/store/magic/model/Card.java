@@ -2,15 +2,37 @@ package br.com.store.magic.model;
 
 import br.com.store.magic.enums.CorCard;
 import br.com.store.magic.enums.TipoCard;
+import org.hibernate.annotations.Type;
 
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
 
+@Entity
 public class Card {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "i_card")
     private Long iCard;
+
+    @Lob
+    @Type(type = "org.hibernate.type.TextType")
+    @Column(name = "nome_card")
     private String nomeCard;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_card")
     private TipoCard tipoCard;
-    private List<CorCard> coresCard;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "cor_card")
+    private CorCard corCard;
 
 
     public Long getiCard() {
@@ -37,11 +59,11 @@ public class Card {
         this.tipoCard = tipoCard;
     }
 
-    public List<CorCard> getCoresCard() {
-        return coresCard;
+    public CorCard getCorCard() {
+        return corCard;
     }
 
-    public void setCoresCard(List<CorCard> coresCard) {
-        this.coresCard = coresCard;
+    public void setCorCard(CorCard corCard) {
+        this.corCard = corCard;
     }
 }
