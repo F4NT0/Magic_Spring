@@ -36,10 +36,10 @@ public class InitController {
     public InitController() {}
 
 
-// Exemplo de um getmapping para hello world
-//    @GetMapping(value = URL_PLURAL, produces = MediaType.APPLICATION_JSON_VALUE)
-//    @ApiOperation("Exemplo de GET de uma lista de dados")
-//    public String saida() {
-//        return "Hello World!";
-//    }
+    //Exemplo de um getmapping para hello world
+    @GetMapping(value = URL_PLURAL, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation("Exemplo de GET de uma lista de dados")
+    public String saida() {
+        return "Hello World!";
+    }
 }
