@@ -33,10 +33,19 @@ public class CardDTO {
     /**
      * Conversor do tipo Card do model para o tipo CardDTO utilizando o stream()
      * @param cards
-     * @return
+     * @return List
      */
-    public static List<CardDTO> converter(List<Card> cards) {
+    public static List<CardDTO> converterList(List<Card> cards) {
         return cards.stream().map(CardDTO::new).collect(Collectors.toList());
+    }
+
+    /**
+     * Conversos do tipo card para o tipo CardDTO
+     * @param card
+     * @return Card
+     */
+    public static CardDTO converterId(Card card) {
+        return new CardDTO(card);
     }
 
     public Long getiCard() {
