@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "4e476da9-0e1b-4c02-9271-a58d88af00fd",
+		"name": "Magic-Testes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13705850"
+	},
+	"item": [
+		{
+			"name": "CRUD",
+			"item": [
+				{
+					"name": "Card",
+					"item": [
+						{
+							"name": "Criar um card",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Criando um card no sistema\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"    \r",
+											"    const responseJson = pm.response.json();\r",
+											"    pm.expect(responseJson[0].iCard).to.be.a(\"number\");\r",
+											"    pm.globals.set(\"idCard\", responseJson[0].iCard);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"nomeCard\": \"Teste\",\r\n        \"tipoCard\": \"C\",\r\n        \"corCard\": \"P\",\r\n        \"flagAtivo\": true\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{urlLocal}}/produtos/cards",
+									"host": [
+										"{{urlLocal}}"
+									],
+									"path": [
+										"produtos",
+										"cards"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscando um Card cadastrado",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Busca em Lista dos cards cadastrados\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{urlLocal}}/produtos/cards",
+									"host": [
+										"{{urlLocal}}"
+									],
+									"path": [
+										"produtos",
+										"cards"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Buscando um Card por ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Busca por ID de um card cadastrado\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{urlLocal}}/produtos/card/{{idCard}}",
+									"host": [
+										"{{urlLocal}}"
+									],
+									"path": [
+										"produtos",
+										"card",
+										"{{idCard}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

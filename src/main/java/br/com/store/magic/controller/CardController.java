@@ -59,10 +59,17 @@ public class CardController {
      */
     @PostMapping(value = URL_PLURAL, produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiModelProperty("Cria um card por requisição")
-    public ResponseEntity<List<Card>> cadastraCard(@RequestBody List<CardDTO> cardDTOs) {
+    public ResponseEntity<String> cadastraCard(@RequestBody List<CardDTO> cardDTOs) {
         List<Card> cards = Card.desconverterList(cardDTOs);
+        for (Card card : cards) {
+            Card card1 = cardRepository.findBynomeCard(card.getNomeCard());
+            if (card1 != null) {
+                String error = "Carta ja existe no sistema";
+                return new ResponseEntity<String>(error, HttpStatus.CONFLICT);
+            }
+        }
         cardRepository.saveAll(cards);
-        return new ResponseEntity<List<Card>>(cards,HttpStatus.CREATED);
+        return new ResponseEntity<String>(cards.toString(),HttpStatus.CREATED);
     }
 
 }
