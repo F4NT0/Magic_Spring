@@ -23,11 +23,17 @@ public class CardDTO {
     @ApiModelProperty(position = 4, notes = "Cores do card")
     private CorCard corCard;
 
+    @ApiModelProperty(position = 5, notes = "Flag mostrando se o card está ativo para venda")
+    private Boolean flagAtivo;
+
+    public CardDTO() {}
+
     public CardDTO(Card card) {
         this.iCard = card.getiCard();
         this.nomeCard = card.getNomeCard();
         this.tipoCard = card.getTipoCard();
         this.corCard = card.getCorCard();
+        this.flagAtivo = card.getFlagAtivo();
     }
 
     /**
@@ -62,5 +68,29 @@ public class CardDTO {
 
     public CorCard getCorCard() {
         return corCard;
+    }
+
+    public void setiCard(Long iCard) {
+        this.iCard = iCard;
+    }
+
+    public void setNomeCard(String nomeCard) {
+        this.nomeCard = nomeCard;
+    }
+
+    public void setTipoCard(TipoCard tipoCard) {
+        this.tipoCard = tipoCard;
+    }
+
+    public void setCorCard(CorCard corCard) {
+        this.corCard = corCard;
+    }
+
+    public Boolean getFlagAtivo() {
+        return flagAtivo;
+    }
+
+    public void setFlagAtivo(Boolean flagAtivo) {
+        this.flagAtivo = flagAtivo;
     }
 }
